@@ -14,8 +14,9 @@ const HeaderBackground = ({children}) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primary,
-    height: Dimensions.DEVICE_HEIGHT * 0.27,
+    minHeight: Dimensions.DEVICE_HEIGHT * 0.27,
     width: Dimensions.DEVICE_WIDTH,
+    justifyContent: 'space-around',
   },
   borderBottom: {
     position: 'absolute',
