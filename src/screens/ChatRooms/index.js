@@ -1,19 +1,15 @@
-import React from 'react'
-import {Text,StyleSheet} from 'react-native'
-import { ContainerView } from '../../components/common'
+import React from 'react';
+import {Text, StyleSheet} from 'react-native';
+import {ContainerView, HeaderBackground} from '../../components/common';
 
+const ChatRooms = () => {
+  return (
+    <ContainerView>
+      <HeaderBackground />
+    </ContainerView>
+  );
+};
 
-const ChatRooms=()=>{
-    return(
-        <ContainerView>
-           <Text>ChatRooms</Text>
-        </ContainerView>
-    )
-}
+const styles = StyleSheet.create({});
 
-const styles=StyleSheet.create({
-
-})
-
-
-export default ChatRooms
+export default ChatRooms;
