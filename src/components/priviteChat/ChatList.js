@@ -17,12 +17,12 @@ const ChatList = ({chat}) => {
         showsVerticalScrollIndicator={false}
         data={chat}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => item.id}
+        keyExtractor={(item, index) => index}
         renderItem={renderItem}
         contentContainerStyle={{
           flexGrow: 1,
         }}
-        style={{marginBottom: Dimensions.DEVICE_HEIGHT * 0.07}}
+        style={{marginBottom: Dimensions.DEVICE_HEIGHT * 0.01}}
       />
     </View>
   );

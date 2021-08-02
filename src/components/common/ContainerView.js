@@ -7,14 +7,13 @@ import Colors from '../../theme/Colors';
 const ContainerView = ({style, children}) => {
   return (
     <KeyboardAwareScrollView
-    nestedScrollEnabled={true}
+      nestedScrollEnabled={true}
       contentContainerStyle={{flexGrow: 1}}
       showsVerticalScrollIndicator={false}
       style={[styles.contanier, style]}>
       {children}
     </KeyboardAwareScrollView>
   );
-
 };
 
 const styles = StyleSheet.create({
@@ -23,7 +22,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     width: '100%',
     height: Dimensions.DEVICE_HEIGHT,
-  
   },
 });
 

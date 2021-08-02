@@ -3,22 +3,30 @@ import {View, Text, TextInput, StyleSheet, I18nManager} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Colors, Dimensions} from '../../theme';
 
-const ChatInput = () => {
+const ChatInput = ({message, setMessage, onPress}) => {
   return (
-    <View style={styles.sendInputContainer}>
-      <TextInput
-        // value={message}
-        // onChangeText={setMessage}
-        multiline
-        placeholder="Type your message..."
-        style={styles.detailsInput}
-      />
-      <Icon
-        color={Colors.primary}
-        name="send-circle"
-        size={Dimensions.DEVICE_HEIGHT * 0.04}
-        type="material-community"
-      />
+    <View
+      style={{
+        width: Dimensions.DEVICE_WIDTH,
+        height: Dimensions.DEVICE_HEIGHT * 0.08,
+        backgroundColor: Colors.white,
+      }}>
+      <View style={styles.sendInputContainer}>
+        <TextInput
+          value={message}
+          onChangeText={setMessage}
+          multiline
+          placeholder="Type your message..."
+          style={styles.detailsInput}
+        />
+        <Icon
+          onPress={onPress}
+          color={Colors.primary}
+          name="send-circle"
+          size={Dimensions.DEVICE_HEIGHT * 0.04}
+          type="material-community"
+        />
+      </View>
     </View>
   );
 };

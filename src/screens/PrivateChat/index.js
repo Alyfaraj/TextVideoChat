@@ -1,16 +1,47 @@
-import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  Text,
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  Keyboard,
+} from 'react-native';
 import {Icon} from 'react-native-elements';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {useDispatch, useSelector} from 'react-redux';
 import {ContainerView, HeaderBackground} from '../../components/common';
 import {ChatInput, ChatList, Header} from '../../components/priviteChat';
+import {addNewMessage, getPrivateChat} from '../../store/actions/private-chat';
 import {Colors, Dimensions} from '../../theme';
 
-const PrivateChat = ({navigation}) => {
+const PrivateChat = ({navigation, route}) => {
+  const {roomId, username} = route.params;
+  const [message, setMessage] = useState('');
+  const dispatch = useDispatch();
+  const {messages} = useSelector(state => state.privateChat);
+
+  const handelAddNewMessgae = () => {
+    dispatch(addNewMessage(roomId, message));
+    setMessage('');
+    Keyboard.dismiss();
+  };
+
+  useEffect(() => {
+    dispatch(getPrivateChat(roomId));
+  }, []);
+
   return (
     <View style={{backgroundColor: Colors.white, flex: 1}}>
-      <Header />
-      <ChatList chat={[1, 2, 3, 4, 5, 6, 7, 8]} />
-      <ChatInput />
+      <Header username={username} />
+
+      <ChatList chat={messages} />
+      <KeyboardAvoidingView behavior="position">
+        <ChatInput
+          message={message}
+          setMessage={setMessage}
+          onPress={handelAddNewMessgae}
+        />
+      </KeyboardAvoidingView>
     </View>
   );
 };

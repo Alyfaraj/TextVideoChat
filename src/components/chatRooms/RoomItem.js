@@ -27,7 +27,10 @@ const RoomItem = ({id, users, avatar, latestMessage, created_at, onPress}) => {
           {trimText(latestMessage.text, 25)}
         </Text>
       </View>
-      <Text style={styles.created_at}>{latestMessage.createdAt}</Text>
+      <Text style={styles.created_at}>
+        {' '}
+        {trimText(new Date(latestMessage.createdAt).toLocaleTimeString(), 5)}
+      </Text>
     </TouchableOpacity>
   );
 };

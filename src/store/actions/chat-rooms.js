@@ -32,9 +32,7 @@ export const createNewChat = reciver => {
           createdAt: new Date().getTime(),
         },
       })
-      .then(() => {
-        // navigation.navigate('ChatRoom');
-      })
+      .then(() => {})
       .catch(err => {
         console.log(err);
       });
@@ -46,8 +44,9 @@ export const getMyRooms = () => {
     const {currentUser} = getState().auth;
 
     let rooms = [];
-    firestore()
+    const unsubscribe = firestore()
       .collection('MESSAGE_ROOMS')
+      .orderBy('latestMessage.createdAt', 'desc')
       .onSnapshot(documentSnapshot => {
         documentSnapshot.docs.map(room => {
           if (
@@ -60,5 +59,7 @@ export const getMyRooms = () => {
         dispatch({type: SET_CHAT_ROOMS, payload: rooms});
         rooms = [];
       });
+
+    return () => unsubscribe();
   };
 };

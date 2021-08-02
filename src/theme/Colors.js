@@ -3,6 +3,7 @@
 export default {
   transparent: 'rgba(0,0,0,0)',
   primary: 'rgba(91, 97, 184, 1)',
+  messageBack: 'rgba(91, 97, 184, .15)',
   secondary: 'rgba(0, 174, 215, 1)',
   semiBink: 'rgba(183, 108, 108, 1)',
   darkOrage: 'rgb(190,82,58)',
@@ -18,7 +19,7 @@ export default {
   blackSecondary: '#4A4A4A',
   textDimmed: '#808080',
   nightColor: '#1d1e22',
-  inputBackground:'rgb(244,244,244)',
+  inputBackground: 'rgb(244,244,244)',
   grayColorText: '#4A4A4A',
   grayLight: '#F5F5F5',
   mainText: 'rgba(49,73,103,1)',

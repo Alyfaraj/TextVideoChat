@@ -12,6 +12,7 @@ const ChatRooms = ({navigation}) => {
   const dispatch = useDispatch();
   const {loading, users} = useSelector(state => state.users);
   const {rooms} = useSelector(state => state.chatRooms);
+  const {currentUser} = useSelector(state => state.auth);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -39,7 +40,15 @@ const ChatRooms = ({navigation}) => {
       </HeaderBackground>
       <RoomList
         items={rooms}
-        onPress={() => navigation.navigate('PrivateChat')}
+        onPress={item =>
+          navigation.navigate('PrivateChat', {
+            roomId: item.channalId,
+            username:
+              currentUser.id == item.users[0].id
+                ? item.users[1].name
+                : item.users[0].name,
+          })
+        }
       />
     </View>
   );

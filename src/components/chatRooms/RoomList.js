@@ -6,7 +6,7 @@ import RoomItem from './RoomItem';
 
 const RoomList = ({items, onPress}) => {
   const renderItem = ({item}) => {
-    return <RoomItem {...item} onPress={() => onPress()} />;
+    return <RoomItem {...item} onPress={() => onPress(item)} />;
   };
 
   return (

@@ -5,7 +5,7 @@ import {HeaderBackground} from '../common';
 import {Colors, Dimensions} from '../../theme';
 import {useNavigation} from '@react-navigation/native';
 
-const Header = ({}) => {
+const Header = ({username}) => {
   const navigation = useNavigation();
   return (
     <HeaderBackground>
@@ -16,9 +16,15 @@ const Header = ({}) => {
         <Text style={styles.backSearchText}>Search</Text>
       </View>
       <View
-        style={[styles.row, {marginBottom: Dimensions.DEVICE_HEIGHT * 0.06}]}>
+        style={[
+          styles.row,
+          {
+            marginBottom: Dimensions.DEVICE_HEIGHT * 0.08,
+            marginTop: Dimensions.DEVICE_HEIGHT * 0.02,
+          },
+        ]}>
         <Text numberOfLines={2} style={styles.headerTitle}>
-          Ali {'\n'}Farag
+          {username}
         </Text>
         <View style={{flexDirection: 'row'}}>
           <Icon
