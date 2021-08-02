@@ -1,68 +1,29 @@
-import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Text, StyleSheet, View, ActivityIndicator} from 'react-native';
 import {AvatarsList, RoomList} from '../../components/chatRooms';
 import {ContainerView, HeaderBackground} from '../../components/common';
 import {Colors, Dimensions} from '../../theme';
+import firestore from '@react-native-firebase/firestore';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUsers} from '../../store/actions/users';
+import {createNewChat, getMyRooms} from '../../store/actions/chat-rooms';
 
 const ChatRooms = ({navigation}) => {
-  const DemoRooms = [
-    {
-      id: 'sdfskdf773dfd7373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-    {
-      id: 'sdfskdf773gfgd7373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-    {
-      id: 'sdfskdf77bvb37373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-    {
-      id: 'sdfskdf773we7373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-    {
-      id: 'sdfskdf77ssw37373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-    {
-      id: 'sdfskdfj7737373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-    {
-      id: 'sdfskdf772447373',
-      name: 'Ahmed Ali',
-      avatar:
-        'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-      lastMessage: 'Hey Ali ,please check last message ',
-      created_at: '18:00',
-    },
-  ];
+  const dispatch = useDispatch();
+  const {loading, users} = useSelector(state => state.users);
+  const {rooms} = useSelector(state => state.chatRooms);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+
+  const handelCreateNewChat = reciver => {
+    dispatch(createNewChat(reciver));
+  };
+
+  useEffect(() => {
+    dispatch(getMyRooms());
+  }, []);
 
   return (
     <View style={{backgroundColor: Colors.white}}>
@@ -70,10 +31,14 @@ const ChatRooms = ({navigation}) => {
         <Text numberOfLines={2} style={styles.headerTitle}>
           Chat with {'\n'} your friends
         </Text>
-        <AvatarsList />
+        {loading ? (
+          <ActivityIndicator />
+        ) : (
+          <AvatarsList users={users} onPress={handelCreateNewChat} />
+        )}
       </HeaderBackground>
       <RoomList
-        items={DemoRooms}
+        items={rooms}
         onPress={() => navigation.navigate('PrivateChat')}
       />
     </View>

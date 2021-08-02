@@ -14,7 +14,7 @@ const RoomList = ({items, onPress}) => {
       style={{height: '100%'}}
       showsVerticalScrollIndicator={false}
       data={items}
-      keyExtractor={(item, index) => item.id}
+      keyExtractor={(item, index) => index}
       renderItem={renderItem}
     />
   );

@@ -1,24 +1,31 @@
 import React from 'react';
 import {StyleSheet, ScrollView, View, TouchableOpacity} from 'react-native';
 import {Avatar, Icon} from 'react-native-elements';
+import {useSelector} from 'react-redux';
 import {Colors, Dimensions} from '../../theme';
 
-const AvatarsList = ({}) => {
-  const avatars = [1, 2, 3, 4, 5, 6];
+const AvatarsList = ({users, onPress}) => {
+  const {id} = useSelector(state => state.auth.currentUser);
   return (
     <ScrollView horizontal contentContainerStyle={styles.avatarScrollList}>
       <TouchableOpacity style={styles.searchBackground}>
         <Icon name="search-outline" type="ionicon" />
       </TouchableOpacity>
-      {avatars.map(avater => (
-        <Avatar
-          containerStyle={{marginStart: Dimensions.DEVICE_WIDTH * 0.02}}
-          source={{
-            uri: 'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
-          }}
-          rounded
-          size="medium"
-        />
+      {/* check for remove current user from avater list */}
+      {users?.map(user => (
+        <View>
+          {user.id !== id ? (
+            <Avatar
+              onPress={() => onPress(user)}
+              containerStyle={{marginStart: Dimensions.DEVICE_WIDTH * 0.02}}
+              source={{
+                uri: user.image,
+              }}
+              rounded
+              size="medium"
+            />
+          ) : null}
+        </View>
       ))}
     </ScrollView>
   );

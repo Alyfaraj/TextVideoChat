@@ -1,25 +1,33 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Avatar} from 'react-native-elements';
+import {useSelector} from 'react-redux';
 import {Colors, Dimensions} from '../../theme';
 import trimText from '../../utils/trimText';
 
-const RoomItem = ({id, name, avatar, lastMessage, created_at, onPress}) => {
+const RoomItem = ({id, users, avatar, latestMessage, created_at, onPress}) => {
+  const {currentUser} = useSelector(state => state.auth);
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={onPress}
       style={styles.container}>
       <Avatar
-        source={{uri: avatar}}
+        source={{
+          uri: users[0].id == currentUser.id ? users[1].image : users[0].image,
+        }}
         rounded
         size={Dimensions.DEVICE_HEIGHT * 0.08}
       />
       <View>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.lastMessage}>{trimText(lastMessage, 25)}</Text>
+        <Text style={styles.name}>
+          {users[0].id == currentUser.id ? users[1].name : users[0].name}
+        </Text>
+        <Text style={styles.lastMessage}>
+          {trimText(latestMessage.text, 25)}
+        </Text>
       </View>
-      <Text style={styles.created_at}>{created_at}</Text>
+      <Text style={styles.created_at}>{latestMessage.createdAt}</Text>
     </TouchableOpacity>
   );
 };
