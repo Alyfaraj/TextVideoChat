@@ -13,7 +13,9 @@ const AvatarsList = ({}) => {
       {avatars.map(avater => (
         <Avatar
           containerStyle={{marginStart: Dimensions.DEVICE_WIDTH * 0.02}}
-          source={{uri: ''}}
+          source={{
+            uri: 'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png',
+          }}
           rounded
           size="medium"
         />

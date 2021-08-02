@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useTranslation} from 'react-i18next';
 import {Colors, Dimensions} from '../../theme';
 import {useSelector} from 'react-redux';
 
