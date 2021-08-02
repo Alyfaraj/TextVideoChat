@@ -4,7 +4,7 @@ import {AvatarsList, RoomList} from '../../components/chatRooms';
 import {ContainerView, HeaderBackground} from '../../components/common';
 import {Colors, Dimensions} from '../../theme';
 
-const ChatRooms = () => {
+const ChatRooms = ({navigation}) => {
   const DemoRooms = [
     {
       id: 'sdfskdf773dfd7373',
@@ -72,7 +72,10 @@ const ChatRooms = () => {
         </Text>
         <AvatarsList />
       </HeaderBackground>
-      <RoomList items={DemoRooms} />
+      <RoomList
+        items={DemoRooms}
+        onPress={() => navigation.navigate('PrivateChat')}
+      />
     </View>
   );
 };

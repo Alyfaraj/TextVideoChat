@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     width: Dimensions.DEVICE_WIDTH * 0.9,
     alignSelf: 'center',
     marginStart: Dimensions.DEVICE_WIDTH * 0.08,
-    marginBottom: Dimensions.DEVICE_HEIGHT * 0.04,
+    marginBottom: Dimensions.DEVICE_HEIGHT * 0.07,
+    marginTop: Dimensions.DEVICE_HEIGHT * 0.03,
   },
   searchBackground: {
     padding: Dimensions.DEVICE_WIDTH * 0.025,

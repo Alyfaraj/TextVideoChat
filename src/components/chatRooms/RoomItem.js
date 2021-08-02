@@ -4,9 +4,12 @@ import {Avatar} from 'react-native-elements';
 import {Colors, Dimensions} from '../../theme';
 import trimText from '../../utils/trimText';
 
-const RoomItem = ({id, name, avatar, lastMessage, created_at}) => {
+const RoomItem = ({id, name, avatar, lastMessage, created_at, onPress}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress}
+      style={styles.container}>
       <Avatar
         source={{uri: avatar}}
         rounded
