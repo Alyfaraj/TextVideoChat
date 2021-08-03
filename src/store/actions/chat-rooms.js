@@ -59,7 +59,6 @@ export const getMyRooms = () => {
         dispatch({type: SET_CHAT_ROOMS, payload: rooms});
         rooms = [];
       });
-
     return () => unsubscribe();
   };
 };

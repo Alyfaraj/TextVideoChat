@@ -5,6 +5,7 @@ import {
   View,
   KeyboardAvoidingView,
   Keyboard,
+  Platform,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -35,13 +36,21 @@ const PrivateChat = ({navigation, route}) => {
       <Header username={username} />
 
       <ChatList chat={messages} />
-      <KeyboardAvoidingView behavior="position">
+      {Platform.OS == 'ios' ? (
+        <KeyboardAvoidingView behavior="position">
+          <ChatInput
+            message={message}
+            setMessage={setMessage}
+            onPress={handelAddNewMessgae}
+          />
+        </KeyboardAvoidingView>
+      ) : (
         <ChatInput
           message={message}
           setMessage={setMessage}
           onPress={handelAddNewMessgae}
         />
-      </KeyboardAvoidingView>
+      )}
     </View>
   );
 };

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, Platform, StyleSheet, View} from 'react-native';
 import {Colors, Dimensions} from '../../theme';
 import ChatInput from './ChatInput';
 import ChatItem from './ChatItem';
@@ -22,7 +22,12 @@ const ChatList = ({chat}) => {
         contentContainerStyle={{
           flexGrow: 1,
         }}
-        style={{marginBottom: Dimensions.DEVICE_HEIGHT * 0.01}}
+        style={{
+          marginBottom:
+            Platform.OS == 'android'
+              ? Dimensions.DEVICE_HEIGHT * 0.03
+              : Dimensions.DEVICE_HEIGHT * 0.01,
+        }}
       />
     </View>
   );
