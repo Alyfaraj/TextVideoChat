@@ -33,6 +33,7 @@ const Header = ({username}) => {
             name="call"
           />
           <Icon
+            onPress={() => navigation.navigate('VideoCall')}
             color={Colors.white}
             containerStyle={styles.iconBackground}
             name="videocam"
