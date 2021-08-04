@@ -5,7 +5,7 @@ import {HeaderBackground} from '../common';
 import {Colors, Dimensions} from '../../theme';
 import {useNavigation} from '@react-navigation/native';
 
-const Header = ({username}) => {
+const Header = ({username, currentRoom}) => {
   const navigation = useNavigation();
   return (
     <HeaderBackground>
@@ -33,8 +33,12 @@ const Header = ({username}) => {
             name="call"
           />
           <Icon
-            onPress={() => navigation.navigate('VideoCall')}
-            color={Colors.white}
+            onPress={() =>
+              navigation.navigate('VideoCall', {roomId: currentRoom.channalId})
+            }
+            color={
+              currentRoom?.video_call == 'true' ? Colors.red : Colors.white
+            }
             containerStyle={styles.iconBackground}
             name="videocam"
           />

@@ -20,6 +20,8 @@ const PrivateChat = ({navigation, route}) => {
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
   const {messages} = useSelector(state => state.privateChat);
+  const {rooms} = useSelector(state => state.chatRooms);
+  const currentRoom = rooms.filter(room => room.channalId == roomId);
 
   const handelAddNewMessgae = () => {
     dispatch(addNewMessage(roomId, message));
@@ -33,9 +35,9 @@ const PrivateChat = ({navigation, route}) => {
 
   return (
     <View style={{backgroundColor: Colors.white, flex: 1}}>
-      <Header username={username} />
-
+      <Header username={username} currentRoom={currentRoom[0]} />
       <ChatList chat={messages} />
+
       {Platform.OS == 'ios' ? (
         <KeyboardAvoidingView behavior="position">
           <ChatInput

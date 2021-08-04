@@ -55,3 +55,15 @@ export const addNewMessage = (roomId, messageText) => {
       );
   };
 };
+
+//  function for change video icon color if user exited or not
+export const taggleVideoCallActive = (roomId, value) => {
+  return dispatch => {
+    firestore().collection('MESSAGE_ROOMS').doc(roomId).set(
+      {
+        video_call: value,
+      },
+      {merge: true},
+    );
+  };
+};
