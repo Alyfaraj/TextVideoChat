@@ -1,5 +1,11 @@
 # TextVideoChat
 
+
+
+
+https://user-images.githubusercontent.com/42911937/128345439-e8d910f5-eece-4150-b74d-2e9f99e393e4.mp4
+
+
 This is a mobile application I built for interview task , using React-Native (v0.64.2).
 
 Application has two screens: one for messages rooms and one for chat. Users list on frist screen predefined in the firebase DB and when running application current user data will select a random from users list and show alert with username .
