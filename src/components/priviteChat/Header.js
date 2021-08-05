@@ -34,7 +34,7 @@ const Header = ({username, currentRoom}) => {
           />
           <Icon
             onPress={() =>
-              navigation.navigate('VideoCall', {roomId: currentRoom.channalId})
+              navigation.navigate('VideoCall', {roomId: currentRoom?.channalId})
             }
             color={
               currentRoom?.video_call == 'true' ? Colors.red : Colors.white

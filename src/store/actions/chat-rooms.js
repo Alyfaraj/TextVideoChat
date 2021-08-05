@@ -31,6 +31,7 @@ export const createNewChat = reciver => {
           text: `chat created. Welcome!!`,
           createdAt: new Date().getTime(),
         },
+        vedio_call: 'false',
       })
       .then(() => {})
       .catch(err => {

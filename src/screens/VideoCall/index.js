@@ -6,13 +6,13 @@ import {taggleVideoCallActive} from '../../store/actions/private-chat';
 
 const VideoCall = ({navigation, route}) => {
   const [videoCall, setVideoCall] = useState(true);
-  const {roomId, username} = route.params;
+  const {roomId} = route.params;
   const dispatch = useDispatch();
 
   const rtcProps = {
     token:
-      '006ddb63cfefec64b40b5e059247902ab42IABQxlDc0odAPpEnSSJ95gddactpLt/5qkVmAdAOY1rNXVDyQxIAAAAAEAC2CAMvfZ0KYQEAAQB8nQph',
-    channel: 'CHATVID',
+      '006ddb63cfefec64b40b5e059247902ab42IABwAAtqMIKU4TiI3PIVrgub+kp/UsfJhcIczccDAVDBeNxmASoAAAAAEADjKAaA/OAMYQEAAQD84Axh',
+    channel: 'VIDCHAT',
     appId: 'ddb63cfefec64b40b5e059247902ab42',
   };
 

@@ -57,11 +57,11 @@ const ChatRooms = ({navigation}) => {
 const styles = StyleSheet.create({
   headerTitle: {
     marginTop: Dimensions.DEVICE_HEIGHT * 0.06,
-    fontSize: Dimensions.DEVICE_HEIGHT * 0.03,
+    fontSize: Dimensions.DEVICE_HEIGHT * 0.034,
     color: Colors.white,
-    fontWeight: '800',
+    fontWeight: '700',
     marginStart: Dimensions.DEVICE_WIDTH * 0.08,
-    fontStyle: 'italic',
+    //  fontStyle: 'italic',
   },
   avatarScrollList: {
     flexDirection: 'row',

@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet, I18nManager} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  I18nManager,
+  Platform,
+} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Colors, Dimensions} from '../../theme';
 
@@ -37,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: Colors.inputBackground,
-    paddingVertical: Dimensions.DEVICE_HEIGHT * 0.01,
+    paddingVertical: Platform.OS == 'ios' ? Dimensions.DEVICE_HEIGHT * 0.01 : 0,
     position: 'absolute',
     bottom: 10,
     justifyContent: 'space-around',
@@ -48,7 +55,6 @@ const styles = StyleSheet.create({
     width: Dimensions.DEVICE_WIDTH * 0.6,
     //   height: Dimensions.DEVICE_HEIGHT * 0.05,
     alignSelf: 'center',
-    textAlign: I18nManager.isRTL ? 'right' : 'left',
     textAlignVertical: 'top',
     paddingHorizontal: 10,
   },
